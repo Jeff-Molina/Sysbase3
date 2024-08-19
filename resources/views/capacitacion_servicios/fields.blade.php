@@ -4,7 +4,9 @@
     {!!
         Form::select(
             'cliente_id',
-            select(\App\Models\Capacitacion_cliente::class,'nombres')
+            \App\Models\Capacitacion_cliente::select(DB::raw("CONCAT(nombres, ' ', apellidos) AS full_name, id"))
+            ->pluck('full_name', 'id')
+            ->prepend('SELECCIONE UNO..', '')
             , null
             , ['id'=>'cliente','class' => 'form-control','style'=>'width: 100%']
         )
@@ -28,12 +30,15 @@
     {!!
         Form::select(
             'equipo_id',
-            select(\App\Models\Capacitacion_equipo::class,'numero_serie')
+            \App\Models\capacitacion_equipo::select(DB::raw("CONCAT(numero_serie, '--', imei) AS full_name, id"))
+            ->pluck('full_name', 'id')
+            ->prepend('SELECCIONE UNO..', '')
             , null
             , ['id'=>'equipos','class' => 'form-control','style'=>'width: 100%']
         )
     !!}
 </div>
+
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('user_id','Nombre:') !!}
