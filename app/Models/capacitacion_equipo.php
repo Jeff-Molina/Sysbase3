@@ -19,14 +19,12 @@ class capacitacion_equipo extends Model
         'modelo_id',
         'tipo_id',
         'numero_serie',
-        'imei',
-        'update_at'
+        'imei'
     ];
 
     protected $casts = [
         'numero_serie' => 'string',
-        'imei' => 'string',
-        'update_at' => 'datetime'
+        'imei' => 'string'
     ];
 
     public static $rules = [
@@ -36,7 +34,7 @@ class capacitacion_equipo extends Model
         'numero_serie' => 'required|string|max:100',
         'imei' => 'nullable|string|max:100',
         'created_at' => 'nullable',
-        'update_at' => 'nullable',
+        'updated_at' => 'nullable',
         'deleted_at' => 'nullable'
     ];
 
@@ -46,17 +44,17 @@ class capacitacion_equipo extends Model
 
     public function marca(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionMarca::class, 'marca_id');
+        return $this->belongsTo(\App\Models\capacitacion_marca::class, 'marca_id');
     }
 
     public function modelo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionModelo::class, 'modelo_id');
+        return $this->belongsTo(\App\Models\capacitacion_modelo::class, 'modelo_id');
     }
 
     public function tipo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionTipo::class, 'tipo_id');
+        return $this->belongsTo(\App\Models\capacitacion_tipo::class, 'tipo_id');
     }
 
     public function capacitacionServicios(): \Illuminate\Database\Eloquent\Relations\HasMany

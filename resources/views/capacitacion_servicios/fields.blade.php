@@ -31,7 +31,7 @@
 <!-- Fecha Recepcion Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha_recepcion', 'Fecha Recepcion:') !!}
-    {!! Form::text('fecha_recepcion', null, ['class' => 'form-control','id'=>'fecha_recepcion']) !!}
+        {!! Form::date('fecha_recepcion', null, ['class' => 'form-control','id'=>'fecha_recepcion']) !!}
 </div>
 
 @push('page_scripts')
@@ -49,7 +49,7 @@
 <!-- Fecha Diagnostico Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha_diagnostico', 'Fecha Diagnostico:') !!}
-    {!! Form::text('fecha_diagnostico', null, ['class' => 'form-control','id'=>'fecha_diagnostico']) !!}
+    {!! Form::date('fecha_diagnostico', null, ['class' => 'form-control','id'=>'fecha_diagnostico']) !!}
 </div>
 
 @push('page_scripts')
@@ -67,7 +67,7 @@
 <!-- Fecha Entrega Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha_entrega', 'Fecha Entrega:') !!}
-    {!! Form::text('fecha_entrega', null, ['class' => 'form-control','id'=>'fecha_entrega']) !!}
+    {!! Form::date('fecha_entrega', null, ['class' => 'form-control','id'=>'fecha_entrega']) !!}
 </div>
 
 @push('page_scripts')

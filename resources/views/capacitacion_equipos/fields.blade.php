@@ -1,19 +1,41 @@
 <!-- Marca Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('marca_id', 'Marca Id:') !!}
-    {!! Form::number('marca_id', null, ['class' => 'form-control', 'required']) !!}
+    <div class="col-sm-12">
+        {!! Form::select(
+            'marca_id',
+            select(\App\Models\Capacitacion_marca::class),
+            null,
+            ['id' => 'marca_id', 'class' => 'form-control','style'=>'width: 100%']
+
+        ) !!}
+    </div>
 </div>
 
 <!-- Modelo Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('modelo_id', 'Modelo Id:') !!}
-    {!! Form::number('modelo_id', null, ['class' => 'form-control', 'required']) !!}
+    <div class="col-sm-12">
+        {!! Form::select(
+            'modelo_id',
+            select(\App\Models\Capacitacion_modelo::class),null,
+            ['id' => 'modelo_id', 'class' => 'form-control','style'=>'width: 100%']
+
+        ) !!}
+    </div>
 </div>
 
 <!-- Tipo Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('tipo_id', 'Tipo Id:') !!}
-    {!! Form::number('tipo_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::label('tipo_id','Tipo:') !!}
+    {!!
+        Form::select(
+            'tipo_id',
+            select(\App\Models\Capacitacion_tipo::class)
+            , null
+            , ['id'=>'tipos','class' => 'form-control','style'=>'width: 100%']
+        )
+    !!}
 </div>
 
 <!-- Numero Serie Field -->
@@ -28,11 +50,6 @@
     {!! Form::text('imei', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
 </div>
 
-<!-- Update At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('update_at', 'Update At:') !!}
-    {!! Form::text('update_at', null, ['class' => 'form-control','id'=>'update_at']) !!}
-</div>
 
 @push('page_scripts')
     <script type="text/javascript">

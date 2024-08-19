@@ -1,6 +1,6 @@
 <!-- Marca Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('marca_id', 'Marca Id:') !!}
+    {!! Form::label('marca_id', 'Marca :') !!}
     <p>{{ $capacitacionEquipo->marca_id }}</p>
 </div>
 
@@ -28,9 +28,4 @@
     <p>{{ $capacitacionEquipo->imei }}</p>
 </div>
 
-<!-- Update At Field -->
-<div class="col-sm-12">
-    {!! Form::label('update_at', 'Update At:') !!}
-    <p>{{ $capacitacionEquipo->update_at }}</p>
-</div>
 

@@ -41,10 +41,13 @@ class capacitacion_servicioController extends AppBaseController
      */
     public function store(Createcapacitacion_servicioRequest $request)
     {
+
         $input = $request->all();
 
         /** @var capacitacion_servicio $capacitacionServicio */
         $capacitacionServicio = capacitacion_servicio::create($input);
+
+
 
         flash()->success('Capacitacion Servicio guardado.');
 

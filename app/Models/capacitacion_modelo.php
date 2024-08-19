@@ -37,11 +37,11 @@ class capacitacion_modelo extends Model
 
     public function marca(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionMarca::class, 'marca_id');
+        return $this->belongsTo(\App\Models\capacitacion_marca::class, 'marca_id');
     }
 
     public function capacitacionEquipos(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\CapacitacionEquipo::class, 'modelo_id');
+        return $this->hasMany(\App\Models\capacitacion_equipo::class, 'modelo_id');
     }
 }

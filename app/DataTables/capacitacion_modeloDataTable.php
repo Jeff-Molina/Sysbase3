@@ -40,7 +40,9 @@ class capacitacion_modeloDataTable extends DataTable
      */
     public function query(capacitacion_modelo $model)
     {
-        return $model->newQuery()->select($model->getTable().'.*');
+        return $model->newQuery()->select($model->getTable().'.*')
+            ->with(['marca']);
+
     }
 
     /**
@@ -107,7 +109,7 @@ class capacitacion_modeloDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('marca_id'),
+            Column::make('marca_id')->data('marca.nombre')->exportable(false)->title('Marca'),
             Column::make('nombre'),
             Column::computed('action')
                 ->exportable(false)

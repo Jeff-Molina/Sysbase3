@@ -44,7 +44,7 @@ class capacitacion_servicio extends Model
         'equipo_id' => 'required',
         'user_id' => 'required',
         'precio' => 'nullable|numeric',
-        'fecha_recepcion' => 'required',
+            'fecha_recepcion' => 'required',
         'problema' => 'required|string|max:65535',
         'fecha_diagnostico' => 'nullable',
         'diagnostico' => 'nullable|string|max:45',
