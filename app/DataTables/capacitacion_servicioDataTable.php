@@ -30,6 +30,25 @@ class capacitacion_servicioDataTable extends DataTable
                 return $capacitacionServicio->id;
 
             })
+            ->editColumn('cliente_id',function (capacitacion_servicio $capacitacionServicio){
+
+                return $capacitacionServicio->cliente()->first()->nombres . ' ' . $capacitacionServicio->cliente()->first()->apellidos;
+
+            })
+            ->editColumn('fecha_diagnostico', function (capacitacion_servicio $capacitacionServicio) {
+                if ($capacitacionServicio->fecha_diagnostico) {
+                    return $capacitacionServicio->fecha_diagnostico->format('d/m/Y');
+                }
+                return '';
+            })
+            ->editColumn('fecha_recepcion', function (capacitacion_servicio $capacitacionServicio) {
+                return date('d/m/Y', strtotime($capacitacionServicio->fecha_recepcion));
+            })->editColumn('fecha_entrega', function (capacitacion_servicio $capacitacionServicio) {
+                if ($capacitacionServicio->fecha_entrega) {
+                    return $capacitacionServicio->fecha_entrega->format('d/m/Y');
+                }
+                return '';
+            })
             ->rawColumns(['action']);
     }
 
@@ -108,17 +127,17 @@ class capacitacion_servicioDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('cliente_id')->data('cliente.nombres'),
-            Column::make('estado_id')->data('estado.nombre'),
-            Column::make('equipo_id')->data('equipo.numero_serie'),
-            Column::make('user_id')->data('user.username'),
-            Column::make('precio'),
-            Column::make('fecha_recepcion'),
-            Column::make('problema'),
-            Column::make('fecha_diagnostico'),
-            Column::make('diagnostico'),
-            Column::make('fecha_entrega'),
-            Column::make('solucion'),
+            Column::make('cliente_id')->title('Cliente')->addClass('text-center'),
+            Column::make('estado_id')->data('estado.nombre')->addClass('text-center')->title('Estado'),
+            Column::make('equipo_id')->data('equipo.numero_serie')->addClass('text-center')->title('Equipo'),
+            Column::make('user_id')->data('user.username')->addClass('text-center')->title('Usuario'),
+            Column::make('precio')->addClass('text-center')->title('Precio'),
+            Column::make('fecha_recepcion')->addClass('text-center'),
+            Column::make('problema')->addClass('text-center'),
+            Column::make('fecha_diagnostico')->addClass('text-center'),
+            Column::make('diagnostico')->addClass('text-center'),
+            Column::make('fecha_entrega')->addClass('text-center'),
+            Column::make('solucion')->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
