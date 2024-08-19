@@ -1,19 +1,19 @@
 <!-- Marca Id Field -->
 <div class="col-sm-12">
     {!! Form::label('marca_id', 'Marca :') !!}
-    <p>{{ $capacitacionEquipo->marca_id }}</p>
+    <p>{{ $capacitacionEquipo->marca->nombre }}</p>
 </div>
 
 <!-- Modelo Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('modelo_id', 'Modelo Id:') !!}
-    <p>{{ $capacitacionEquipo->modelo_id }}</p>
+    {!! Form::label('modelo_id', 'Modelo:') !!}
+    <p>{{ $capacitacionEquipo->modelo->nombre }}</p>
 </div>
 
 <!-- Tipo Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('tipo_id', 'Tipo Id:') !!}
-    <p>{{ $capacitacionEquipo->tipo_id }}</p>
+    {!! Form::label('tipo_id', 'Tipo:') !!}
+    <p>{{ $capacitacionEquipo->tipo->nombre}}</p>
 </div>
 
 <!-- Numero Serie Field -->

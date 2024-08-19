@@ -40,7 +40,7 @@ class capacitacion_servicioDataTable extends DataTable
      */
     public function query(capacitacion_servicio $model)
     {
-        return $model->newQuery()->select($model->getTable().'.*');
+        return $model->newQuery()->select($model->getTable().'.*')->with(['cliente','equipo','estado','user']);
     }
 
     /**
@@ -107,10 +107,10 @@ class capacitacion_servicioDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('cliente_id'),
-            Column::make('estado_id'),
-            Column::make('equipo_id'),
-            Column::make('user_id'),
+            Column::make('cliente_id')->data('cliente.nombres'),
+            Column::make('estado_id')->data('estado.nombre'),
+            Column::make('equipo_id')->data('equipo.numero_serie'),
+            Column::make('user_id')->data('user.username'),
             Column::make('precio'),
             Column::make('fecha_recepcion'),
             Column::make('problema'),

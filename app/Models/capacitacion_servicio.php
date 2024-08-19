@@ -61,17 +61,17 @@ class capacitacion_servicio extends Model
 
     public function cliente(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionCliente::class, 'cliente_id');
+        return $this->belongsTo(\App\Models\capacitacion_cliente::class, 'cliente_id');
     }
 
     public function equipo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionEquipo::class, 'equipo_id');
+        return $this->belongsTo(\App\Models\capacitacion_equipo::class, 'equipo_id');
     }
 
     public function estado(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\CapacitacionEstado::class, 'estado_id');
+        return $this->belongsTo(\App\Models\capacitacion_estado::class, 'estado_id');
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -1,25 +1,50 @@
 <!-- Cliente Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('cliente_id', 'Cliente Id:') !!}
-    {!! Form::number('cliente_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::label('cliente_id','Cliente:') !!}
+    {!!
+        Form::select(
+            'cliente_id',
+            select(\App\Models\Capacitacion_cliente::class,'nombres')
+            , null
+            , ['id'=>'cliente','class' => 'form-control','style'=>'width: 100%']
+        )
+    !!}
 </div>
-
 <!-- Estado Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('estado_id', 'Estado Id:') !!}
-    {!! Form::number('estado_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::label('estado_id','Estado:') !!}
+    {!!
+        Form::select(
+            'estado_id',
+            select(\App\Models\Capacitacion_estado::class)
+            , null
+            , ['id'=>'estado','class' => 'form-control','style'=>'width: 100%']
+        )
+    !!}
 </div>
-
 <!-- Equipo Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('equipo_id', 'Equipo Id:') !!}
-    {!! Form::number('equipo_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::label('equipo_id','Equipo:') !!}
+    {!!
+        Form::select(
+            'equipo_id',
+            select(\App\Models\Capacitacion_equipo::class,'numero_serie')
+            , null
+            , ['id'=>'equipos','class' => 'form-control','style'=>'width: 100%']
+        )
+    !!}
 </div>
-
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::label('user_id','Nombre:') !!}
+    {!!
+        Form::select(
+            'user_id',
+            select(\App\Models\User::class,'name')
+            , null
+            , ['id'=>'users','class' => 'form-control','style'=>'width: 100%']
+        )
+    !!}
 </div>
 
 <!-- Precio Field -->
