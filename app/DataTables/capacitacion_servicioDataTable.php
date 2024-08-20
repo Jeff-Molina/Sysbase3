@@ -21,33 +21,19 @@ class capacitacion_servicioDataTable extends DataTable
 
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', function(capacitacion_servicio $capacitacionServicio){
+            ->addColumn('action', function (capacitacion_servicio $capacitacionServicio) {
                 $id = $capacitacionServicio->id;
-                return view('capacitacion_servicios.datatables_actions',compact('capacitacionServicio','id'));
+                return view('capacitacion_servicios.datatables_actions', compact('capacitacionServicio', 'id'));
             })
-            ->editColumn('id',function (capacitacion_servicio $capacitacionServicio){
+            ->editColumn('id', function (capacitacion_servicio $capacitacionServicio) {
 
                 return $capacitacionServicio->id;
 
             })
-            ->editColumn('cliente_id',function (capacitacion_servicio $capacitacionServicio){
+            ->editColumn('cliente_id', function (capacitacion_servicio $capacitacionServicio) {
 
-                return $capacitacionServicio->cliente()->first()->nombres . ' ' . $capacitacionServicio->cliente()->first()->apellidos;
+                return $capacitacionServicio->cliente->nombre_completo;
 
-            })
-            ->editColumn('fecha_diagnostico', function (capacitacion_servicio $capacitacionServicio) {
-                if ($capacitacionServicio->fecha_diagnostico) {
-                    return $capacitacionServicio->fecha_diagnostico->format('d/m/Y');
-                }
-                return '';
-            })
-            ->editColumn('fecha_recepcion', function (capacitacion_servicio $capacitacionServicio) {
-                return date('d/m/Y', strtotime($capacitacionServicio->fecha_recepcion));
-            })->editColumn('fecha_entrega', function (capacitacion_servicio $capacitacionServicio) {
-                if ($capacitacionServicio->fecha_entrega) {
-                    return $capacitacionServicio->fecha_entrega->format('d/m/Y');
-                }
-                return '';
             })
             ->rawColumns(['action']);
     }
@@ -60,7 +46,7 @@ class capacitacion_servicioDataTable extends DataTable
      */
     public function query(capacitacion_servicio $model)
     {
-        return $model->newQuery()->select($model->getTable().'.*')->with(['cliente','equipo','estado','user']);
+        return $model->newQuery()->select($model->getTable() . '.*')->with(['cliente', 'equipo', 'estado', 'user']);
     }
 
     /**
@@ -71,17 +57,17 @@ class capacitacion_servicioDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                ->columns($this->getColumns())
-                ->minifiedAjax()
-                ->ajax([
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->ajax([
                 'data' => "function(data) { formatDataDataTables($('#formFiltersDatatables').serializeArray(), data);   }"
-                ])
-                ->info(true)
-                ->language(['url' => asset('js/SpanishDataTables.json')])
-                ->responsive(true)
-                ->stateSave(false)
-                ->orderBy(1,'desc')
-                ->dom('
+            ])
+            ->info(true)
+            ->language(['url' => asset('js/SpanishDataTables.json')])
+            ->responsive(true)
+            ->stateSave(false)
+            ->orderBy(1, 'desc')
+            ->dom('
                     <"row mb-2"
                     <"col-sm-12 col-md-6" B>
                     <"col-sm-12 col-md-6" f>
@@ -92,31 +78,31 @@ class capacitacion_servicioDataTable extends DataTable
                     <"col-sm-6 order-1 order-sm-2 text-right" l>
                     >
                 ')
-                ->buttons(
+            ->buttons(
 
-                    Button::make('reset')
-                        ->addClass('')
-                        ->text('<i class="fa fa-undo"></i> <span class="d-none d-sm-inline">Reiniciar</span>'),
+                Button::make('reset')
+                    ->addClass('')
+                    ->text('<i class="fa fa-undo"></i> <span class="d-none d-sm-inline">Reiniciar</span>'),
 
-                    Button::make('export')
-                        ->extend('collection')
-                        ->addClass('')
-                        ->text('<i class="fa fa-download"></i> <span class="d-none d-sm-inline">Exportar</span>')
-                        ->buttons([
-                            Button::make('print')
-                                ->addClass('dropdown-item')
-                                ->text('<i class="fa fa-print"></i> <span class="d-none d-sm-inline"> Imprimir</span>'),
-                            Button::make('csv')
-                                ->addClass('dropdown-item')
-                                ->text('<i class="fa fa-file-csv"></i> <span class="d-none d-sm-inline"> Csv</span>'),
-                            Button::make('pdf')
-                                ->addClass('dropdown-item')
-                                ->text('<i class="fa fa-file-pdf"></i> <span class="d-none d-sm-inline"> Pdf</span>'),
-                            Button::make('excel')
-                                ->addClass('dropdown-item')
-                                ->text('<i class="fa fa-file-excel"></i> <span class="d-none d-sm-inline"> Excel</span>'),
-                        ]),
-                );
+                Button::make('export')
+                    ->extend('collection')
+                    ->addClass('')
+                    ->text('<i class="fa fa-download"></i> <span class="d-none d-sm-inline">Exportar</span>')
+                    ->buttons([
+                        Button::make('print')
+                            ->addClass('dropdown-item')
+                            ->text('<i class="fa fa-print"></i> <span class="d-none d-sm-inline"> Imprimir</span>'),
+                        Button::make('csv')
+                            ->addClass('dropdown-item')
+                            ->text('<i class="fa fa-file-csv"></i> <span class="d-none d-sm-inline"> Csv</span>'),
+                        Button::make('pdf')
+                            ->addClass('dropdown-item')
+                            ->text('<i class="fa fa-file-pdf"></i> <span class="d-none d-sm-inline"> Pdf</span>'),
+                        Button::make('excel')
+                            ->addClass('dropdown-item')
+                            ->text('<i class="fa fa-file-excel"></i> <span class="d-none d-sm-inline"> Excel</span>'),
+                    ]),
+            );
     }
 
     /**

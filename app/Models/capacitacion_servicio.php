@@ -30,11 +30,11 @@ class capacitacion_servicio extends Model
 
     protected $casts = [
         'precio' => 'decimal:2',
-        'fecha_recepcion' => 'date',
+        'fecha_recepcion' => 'date:d/m/Y',
         'problema' => 'string',
-        'fecha_diagnostico' => 'date',
+        'fecha_diagnostico' => 'date:d/m/Y',
         'diagnostico' => 'string',
-        'fecha_entrega' => 'date',
+        'fecha_entrega' => 'date:d/m/Y',
         'solucion' => 'string'
     ];
 
@@ -78,4 +78,5 @@ class capacitacion_servicio extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
+
 }
