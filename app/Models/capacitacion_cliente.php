@@ -55,4 +55,6 @@ class capacitacion_cliente extends Model
         return $this->nombres." ".$this->apellidos;
 
     }
+
+
 }

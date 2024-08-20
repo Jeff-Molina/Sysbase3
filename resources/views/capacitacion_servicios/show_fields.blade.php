@@ -1,7 +1,7 @@
 <!-- Cliente Id Field -->
 <div class="col-sm-12">
     {!! Form::label('cliente_id', 'Cliente:') !!}
-    <p>{{ $capacitacionServicio->cliente->nombres }}</p>
+    <p>{{ $capacitacionServicio->cliente->nombre_completo  }}</p>
 </div>
 
 <!-- Estado Id Field -->
@@ -13,7 +13,7 @@
 <!-- Equipo Id Field -->
 <div class="col-sm-12">
     {!! Form::label('equipo_id', 'Equipo:') !!}
-    <p>{{ $capacitacionServicio->equipo->nombre }}</p>
+    <p>{{ $capacitacionServicio->equipo->nombre_equipo }}</p>
 </div>
 
 <!-- User Id Field -->

@@ -42,4 +42,6 @@ class capacitacion_marca extends Model
     {
         return $this->hasMany(\App\Models\CapacitacionModelo::class, 'marca_id');
     }
+
+
 }

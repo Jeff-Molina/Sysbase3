@@ -61,4 +61,11 @@ class capacitacion_equipo extends Model
     {
         return $this->hasMany(\App\Models\CapacitacionServicio::class, 'equipo_id');
     }
+    public function getNombreEquipoAttribute()
+    {
+        return $this->numero_serie."-".$this->imei;
+
+    }
+
+
 }
