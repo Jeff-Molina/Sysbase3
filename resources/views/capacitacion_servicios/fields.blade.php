@@ -4,9 +4,7 @@
     {!!
         Form::select(
             'cliente_id',
-            \App\Models\Capacitacion_cliente::select(DB::raw("CONCAT(nombres, ' ', apellidos) AS full_name, id"))
-            ->pluck('full_name', 'id')
-            ->prepend('SELECCIONE UNO..', '')
+            select(\App\Models\capacitacion_cliente::class,'nombre_completo')
             , null
             , ['id'=>'cliente','class' => 'form-control','style'=>'width: 100%']
         )
@@ -15,6 +13,7 @@
 <!-- Estado Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('estado_id','Estado:') !!}
+
     {!!
         Form::select(
             'estado_id',
@@ -27,12 +26,11 @@
 <!-- Equipo Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('equipo_id','Equipo:') !!}
+    <a href="{{route('capacitacionEquipos.create')}}" style="color: red">Nuevo</a>
     {!!
         Form::select(
             'equipo_id',
-            \App\Models\capacitacion_equipo::select(DB::raw("CONCAT(numero_serie, '--', imei) AS full_name, id"))
-            ->pluck('full_name', 'id')
-            ->prepend('SELECCIONE UNO..', '')
+            select(\App\Models\capacitacion_equipo::class,'nombre_equipo')
             , null
             , ['id'=>'equipos','class' => 'form-control','style'=>'width: 100%']
         )
@@ -55,7 +53,7 @@
 <!-- Precio Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('precio', 'Precio:') !!}
-    {!! Form::number('precio', null, ['class' => 'form-control']) !!}
+    {!! Form::number('precio', null, ['class' => 'form-control','placeholder'=>'Q. 00.00']) !!}
 </div>
 
 <!-- Fecha Recepcion Field -->

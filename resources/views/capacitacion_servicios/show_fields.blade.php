@@ -1,3 +1,8 @@
+@dump(config('jefferson.name'))
+@php
+    config(['jefferson.name'=>'Alejandro'])
+@endphp
+@dump(config('jefferson.name'))
 <!-- Cliente Id Field -->
 <div class="col-sm-12">
     {!! Form::label('cliente_id', 'Cliente:') !!}
@@ -25,13 +30,13 @@
 <!-- Precio Field -->
 <div class="col-sm-12">
     {!! Form::label('precio', 'Precio:') !!}
-    <p>{{ $capacitacionServicio->precio }}</p>
+    <p> {{dvs().'. '. $capacitacionServicio->precio }}</p>
 </div>
 
 <!-- Fecha Recepcion Field -->
 <div class="col-sm-12">
     {!! Form::label('fecha_recepcion', 'Fecha Recepcion:') !!}
-    <p>{{ $capacitacionServicio->fecha_recepcion->format('d-m-Y') }}</p>
+    <p>{{ $capacitacionServicio->fecha_recepcion }}</p>
 </div>
 
 <!-- Problema Field -->
@@ -43,7 +48,7 @@
 <!-- Fecha Diagnostico Field -->
 <div class="col-sm-12">
     {!! Form::label('fecha_diagnostico', 'Fecha Diagnostico:') !!}
-    <p>{{ $capacitacionServicio->fecha_diagnostico->format('d-m-Y') }}</p>
+    <p>{{ $capacitacionServicio->fecha_diagnostico }}</p>
 </div>
 
 <!-- Diagnostico Field -->
@@ -55,7 +60,7 @@
 <!-- Fecha Entrega Field -->
 <div class="col-sm-12">
     {!! Form::label('fecha_entrega', 'Fecha Entrega:') !!}
-    <p>{{ $capacitacionServicio->fecha_entrega->format('d-m-Y') }}</p>
+    <p>{{ $capacitacionServicio->fecha_entrega}}</p>
 </div>
 
 <!-- Solucion Field -->

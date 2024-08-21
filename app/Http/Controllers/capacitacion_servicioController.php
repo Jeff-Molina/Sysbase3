@@ -49,7 +49,7 @@ class capacitacion_servicioController extends AppBaseController
 
 
 
-        flash()->success('Capacitacion Servicio guardado.');
+        flash()->success('Capacitacion Servicio se ha guardado correctamente.');
 
         return redirect(route('capacitacionServicios.index'));
     }
