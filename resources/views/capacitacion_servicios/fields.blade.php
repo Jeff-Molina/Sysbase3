@@ -26,7 +26,7 @@
 <!-- Equipo Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('equipo_id','Equipo:') !!}
-    <a href="{{route('capacitacionEquipos.create')}}" style="color: red">Nuevo</a>
+    <a href="{{route('capacitacionEquipos.create')}}" style="color: blue">Nuevo</a>
     {!!
         Form::select(
             'equipo_id',
