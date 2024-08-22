@@ -1,8 +1,4 @@
-@dump(config('jefferson.name'))
-@php
-    config(['jefferson.name'=>'Alejandro'])
-@endphp
-@dump(config('jefferson.name'))
+
 <!-- Cliente Id Field -->
 <div class="col-sm-12">
     {!! Form::label('cliente_id', 'Cliente:') !!}

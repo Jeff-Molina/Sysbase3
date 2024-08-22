@@ -50,17 +50,6 @@
     !!}
 </div>
 
-<div class="form-group col-sm-6">
-    {!! Form::label('model_id','Model:') !!}
-    {!!
-        Form::select(
-            'model_id',
-            slc(\App\Models\Model::class)
-            , null
-            , ['id'=>'models','class' => 'form-control','style'=>'width: 100%']
-        )
-    !!}
-</div>
 
 <!-- Precio Field -->
 <div class="form-group col-sm-6">
